@@ -1,0 +1,12 @@
+{
+	"extends": "eslint-config-airbnb",
+	"rules": {
+		"comma-dangle": [ 2, "never" ]
+	},
+	"ecmaFeatures": {
+		"spread": true,
+		"restParams": true,
+		"arrowFunctions": true,
+		"experimentalObjectRestSpread": true
+	}
+}
