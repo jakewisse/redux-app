@@ -13,7 +13,7 @@ class MessageResults extends Component {
         </tr>
       </thead>
       <tbody>
-      {this.props.messages.map((m) => <MessageRow {...m} />)}
+      {this.props.messages.map((m, i) => <MessageRow {...m} key={i} />)}
       </tbody>
     </table>);
   }
@@ -26,4 +26,3 @@ MessageResults.propTypes = {
 };
 
 export default MessageResults;
-

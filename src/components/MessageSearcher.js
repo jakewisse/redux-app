@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { messageSearchChange, searchMessages } from '../actions';
+import { Spinner } from '../components';
 
 class MessageSearcher extends Component {
 
@@ -10,21 +11,28 @@ class MessageSearcher extends Component {
   };
 
   handleSubmit = (e) => {
-    this.props.dispatch(searchMessages())
+    e.preventDefault();
+    if (this.props.query) {
+      this.props.dispatch(searchMessages())
+    }
   };
 
   render() {
     return (
-      <div>
-        <label>
-          Search:
-          <input type="text" value={this.props.channelSearch}
+      <form className="form-inline">
+        <div className="form-group">
+          <label htmlFor="MessageSearcher_query">Search:&nbsp;</label>
+          <input id="MessageSearcher_query" className="form-control" type="text" value={this.props.query}
             onChange={this.handleChange}
-            placeholder="Search for a channel..."
-          />
-        </label>
-        <button type="button" onClick={this.handleSubmit}>Search</button>
-      </div>
+            placeholder="Search messages..."
+          />&nbsp;
+        </div>
+
+        <button className="btn btn-default" type="submit" onClick={this.handleSubmit}>Search</button>
+
+        { this.props.isFetching ? <div className="form-group"><Spinner /></div> : null }
+
+      </form>
     );
   }
 
@@ -32,7 +40,9 @@ class MessageSearcher extends Component {
 
 MessageSearcher.displayName = 'MessageSearcher';
 MessageSearcher.propTypes = {
-  channelSearch: PropTypes.string
+  dispatch: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool,
+  query: PropTypes.string
 };
 
-export default connect()(MessageSearcher);
+export default MessageSearcher;

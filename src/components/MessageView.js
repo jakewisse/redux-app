@@ -9,7 +9,10 @@ class MessageView extends Component {
     return (
       <div>
         <h3>Search Messages</h3>
-        <MessageSearcher />
+        <MessageSearcher dispatch={this.props.dispatch}
+          isFetching={this.props.isFetching}
+          query={this.props.query}
+        />
         <MessageResults messages={this.props.messages} />
       </div>
     );
@@ -19,10 +22,12 @@ class MessageView extends Component {
 
 MessageView.displayName = 'MessageView';
 MessageView.propTypes = {
+  dispatch: PropTypes.func,
+  messages: PropTypes.array,
+  query: PropTypes.string,
+  isFetching: PropTypes.bool
 };
 
-const mapStateToProps = (state) => ({
-  messages: state.messagesView.messages
-});
+const mapStateToProps = (state) => ({ ...state.messagesView });
 
 export default connect(mapStateToProps)(MessageView);

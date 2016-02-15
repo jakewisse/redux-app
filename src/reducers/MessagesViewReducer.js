@@ -1,6 +1,8 @@
 import {
   MESSAGE_SEARCH_CHANGE,
-  RECEIVE_MESSAGES_FOR_SEARCH
+  REQUEST_MESSAGES_FOR_SEARCH,
+  RECEIVE_MESSAGES_FOR_SEARCH,
+  FAILED_MESSAGES_FOR_SEARCH
 } from '../actions';
 
 /**
@@ -24,10 +26,21 @@ function reducer(state = defaultState, action) {
         ...state,
         query: action.payload.value
       };
+    case REQUEST_MESSAGES_FOR_SEARCH:
+      return {
+        ...state,
+        isFetching: true
+      };
     case RECEIVE_MESSAGES_FOR_SEARCH:
       return {
         ...state,
-        messages: action.payload.matches
+        messages: action.payload.matches,
+        isFetching: false
+      };
+    case FAILED_MESSAGES_FOR_SEARCH:
+      return {
+        ...state,
+        isFetching: false
       };
     default:
       return state;

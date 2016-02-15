@@ -5,6 +5,7 @@ import MessageRow from './MessageRow';
 import MessageResults from './MessageResults';
 import AboutUs from './AboutUs';
 import Home from './Home';
+import Spinner from './Spinner';
 
 export {
   Hub,
@@ -13,5 +14,6 @@ export {
   MessageResults,
   MessageRow,
   AboutUs,
-  Home
+  Home,
+  Spinner
 };
