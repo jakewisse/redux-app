@@ -8,7 +8,7 @@ class Hub extends Component {
       <div>
         <Link to="/">Home</Link>
         <span>&nbsp;|&nbsp;</span>
-        <Link to="channels">Channel List</Link>
+        <Link to="message-search">Search Messages</Link>
         <span>&nbsp;|&nbsp;</span>
         <Link to="about">About us</Link>
       </div>

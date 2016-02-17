@@ -13,7 +13,7 @@ $(document).ready(() => {
       <Router history={browserHistory}>
         <Route path="/" component={Hub}>
           <IndexRoute component={Home} />
-          <Route path="channels" component={MessageView} />
+          <Route path="message-search" component={MessageView} />
           <Route path="about" component={AboutUs} />
         </Route>
       </Router>
